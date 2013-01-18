@@ -6,19 +6,21 @@ import java.util.HashSet;
 public class Academia {
     private String nombre;
     private String dir;
-    public static BaseDatos db = new BaseDatos("Academia");
+    public static BaseDatos db;
     
     public Academia(String nombre, String dir) {
         this.nombre = nombre;
         this.dir = dir;
-        Academia.db.crearBaseDatos();
-    }
+        db = new BaseDatos("Academia");
+            }
     public static BaseDatos getDb(){
         return db;
     }
     
     public static void main(String[] args) {
+        
         Academia academia = new Academia ("La Crea", "Nicolas Guillen");
+        
         System.out.println("");
         System.out.println("========Datos academia ===========");
         System.out.println(academia);

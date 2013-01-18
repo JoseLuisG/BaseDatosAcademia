@@ -6,10 +6,11 @@ import java.util.HashSet;
 public class Alumno {
     static int idLast = 0;
     
-    static int idAsg;
+    static int idAsg=0;
     int id;
     String nombre;
     String dir;
+    
     HashSet<Asignatura> hsAsg = new HashSet<Asignatura>();;
     
     public Alumno(String nombre, String dir) {
@@ -39,10 +40,16 @@ public class Alumno {
         }
         
     }
+    
+    public void remove (Asignatura asg){
+        Academia.db.bajaAlumno(this);
+    }
 
     public Collection<Asignatura> getAsignaturas() {
         return hsAsg;
     }
+    
+    
 
     @Override
     public String toString() {

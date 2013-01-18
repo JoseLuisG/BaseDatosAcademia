@@ -20,8 +20,9 @@ public class BaseDatos {
 
     public BaseDatos(String nombre) {
         this.nombre = nombre;
+        crearBaseDatos();
     }
-    public void crearBaseDatos(){
+    private void crearBaseDatos(){
                 
         // Crear Alumnos
         int idJose = altaAlumno(new Alumno("Jose","C/El Pez"));
@@ -30,17 +31,22 @@ public class BaseDatos {
         
         // Crear Asignaturas
         int idMate = altaAsignatura (new Asignatura("Mate",10));
-        int idCono = altaAsignatura (new Asignatura("Cono",20));
+        int idDibujo = altaAsignatura (new Asignatura("Dibujo",20));
         int idCocina = altaAsignatura (new Asignatura("Cocina",10));
         
         // Crear relaciones Alumnos<->Asignaturas
-        hmAlumnos.get(idJose).add(hmAsignaturas.get(idMate));
-        hmAlumnos.get(idJose).add(hmAsignaturas.get(idCono));
+        //hmAlumnos.get(idJose).add(hmAsignaturas.get(idMate));
+        Alumno aluJose = hmAlumnos.get(idJose);
+        Asignatura asgMate = hmAsignaturas.get(idMate);
+        aluJose.add(asgMate);
+        
+        
+        hmAlumnos.get(idJose).add(hmAsignaturas.get(idDibujo));
         
         hmAlumnos.get(idJuan).add(hmAsignaturas.get(idCocina));
     
         hmAlumnos.get(idPepa).add(hmAsignaturas.get(idMate));
-        hmAlumnos.get(idPepa).add(hmAsignaturas.get(idCono));
+        hmAlumnos.get(idPepa).add(hmAsignaturas.get(idDibujo));
         hmAlumnos.get(idPepa).add(hmAsignaturas.get(idCocina));
         
 
@@ -49,6 +55,11 @@ public class BaseDatos {
         hmAlumnos.put(alu.getId(),alu);
         return alu.getId();
     }
+    
+    public void bajaAlumno (Alumno alu){
+        hmAlumnos.remove(alu.getId());
+    }
+
     
     public int altaAsignatura (Asignatura asg){
         hmAsignaturas.put(asg.getId(),asg);

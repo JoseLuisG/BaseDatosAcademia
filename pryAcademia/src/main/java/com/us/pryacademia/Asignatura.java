@@ -6,9 +6,11 @@ import java.util.HashSet;
 public class Asignatura {
     
     private static int auxId;
-    private int id;
+    
 
-    static int idAlu;    
+    static int idAlu=0;    
+    
+    private int id;
     private String nombre;
     private int    horas;
     
