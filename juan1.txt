@@ -1,6 +1,6 @@
 linea José Luis 00
 linea 10
-linea 20 Modificada por mi José Luis
+linea 20 Consenso conflicto Jose Luis y Juan resuelto
 linea 30
 linea 40
 linea juan 50
