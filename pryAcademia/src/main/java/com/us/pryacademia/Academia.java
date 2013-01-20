@@ -25,6 +25,20 @@ public class Academia {
         System.out.println("========Datos academia ===========");
         System.out.println(academia);
         System.out.println("");
+        
+        mostrarProfes();
+        mostrarAlumnos();
+        mostrarAsignaturas();
+        
+        // Borrar una matricula (NO FUNCIONA, EL OBJETO ES DIFERENTE)
+        Alumno alu = new Alumno(1); // jose
+        alu.remove(new Asignatura(1)); // Dibujo
+        mostrarAlumnos();
+        mostrarAsignaturas();
+    
+    }
+
+    private static void mostrarAlumnos(){
         System.out.println("========Datos Alumnos  ===========");
         for (Alumno alu : Academia.db.getAlumnos())
         {
@@ -36,6 +50,9 @@ public class Academia {
             }
 
         }
+        
+    }
+    private static void mostrarAsignaturas(){
         System.out.println("");
         System.out.println("========Datos Asignaturas  ===========");
         for (Asignatura asg : Academia.db.getAsignaturas())
@@ -48,9 +65,16 @@ public class Academia {
             }
             
         }
-
         
+    }
 
+    private static void mostrarProfes(){
+        System.out.println("");
+        System.out.println("========Datos PROFESORES   ===========");
+        for (Profesor profe : Academia.db.getProfesores())
+        {
+            System.out.println(profe);
+        }
     }
 
     @Override

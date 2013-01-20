@@ -1,46 +1,62 @@
 package com.us.pryacademia;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
-public class Asignatura {
+public class Asignatura extends ClasePadreAcademia {
     
-    private static int auxId;
+    private static int idLast;
     
-
-    static int idAlu=0;    
-    
-    private int id;
-    private String nombre;
-    private int    horas;
-    
+    private int   horas;
+    private Date  horaIni;
+    private Date  horaFin;
     
     private HashSet<Alumno> hsAlu = new HashSet<Alumno>();
 
     public Asignatura(String nombre, int horas) {
-        this.nombre = nombre;
+        super(++Asignatura.idLast, nombre);
         this.horas = horas;
-        this.id = ++Asignatura.auxId;
+        
     }
+    //Obtiene el alumno
+    public Asignatura(Integer id) {
+        Asignatura asg = Academia.db.getTbAsignaturas().get(id);
+        this.id = asg.id;
+        this.nombre = asg.nombre;
+        this.horas = asg.horas;
+        this.horaFin = asg.horaFin;
+        this.horaIni = asg.horaIni;
+    }
+    
     
     public Integer getId() {
         return this.id;
     }
     public void add (Alumno alu){
-        if (idAlu != alu.getId())
+        if (!hsAlu.contains(alu))
         {
-            idAlu = alu.getId();
             hsAlu.add(alu);
             alu.add(this);
         }
-        else
+
+    }
+    
+    public void remove (Alumno alu){
+        if (hsAlu.contains(alu))
         {
-            idAlu = -1;
+            hsAlu.remove(alu);
+            alu.remove(this);
         }
+            
     }
 
+
     public Collection<Alumno> getAlumnos() {
-        return hsAlu;
+        return Collections.unmodifiableSet(hsAlu);
     }
 
     @Override
@@ -50,17 +66,4 @@ public class Asignatura {
                 + ", horas=" + horas 
                 + ", num.Alu=" + hsAlu.size() + '}';
     }
-    
-    
-    
-    
-
-
-    
-    
-    
-    
-    
-    
-    
 }
