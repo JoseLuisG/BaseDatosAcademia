@@ -19,15 +19,11 @@ public class Profesor extends ClasePadreAcademia {
         return id;
     }
 
-    public boolean existe (){
-        return Academia.db.getAlumnos().contains(this.id);
-    }
-    
     public void add (Asignatura asg){
         if (!hsAsg.contains(asg))
         {
             hsAsg.add(asg);
-            
+            asg.setIdProfe(id);
         }
             
     }
