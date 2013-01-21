@@ -10,30 +10,19 @@ import java.util.Set;
 public class Asignatura extends ClasePadreAcademia {
     
     private static int idLast;
-<<<<<<< HEAD
     
     private int   horas;
     private int   idProfe;
     private String idAula;
     private Date  horaIni;
     private Date  horaFin;
-    
-=======
-    
-    static int idAlu=0;    
-    
-    private int id;
-    private String nombre;
-    private int    horas;
-    
->>>>>>> Juan. Obliga Commit
+
     private HashSet<Alumno> hsAlu = new HashSet<Alumno>();
 
     public Asignatura(String nombre, int horas) {
         super(++Asignatura.idLast, nombre);
         this.horas = horas;
-<<<<<<< HEAD
-        
+        this.id = ++Asignatura.idLast;
     }
     //Obtiene el alumno
     
@@ -45,9 +34,6 @@ public class Asignatura extends ClasePadreAcademia {
         this.horaFin = asg.horaFin;
         this.horaIni = asg.horaIni;
         this.hsAlu = asg.hsAlu;
-=======
-        this.id = ++Asignatura.idLast;
->>>>>>> Juan. Obliga Commit
     }
     
     public Integer getId() {
