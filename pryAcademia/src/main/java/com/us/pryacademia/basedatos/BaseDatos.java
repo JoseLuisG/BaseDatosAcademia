@@ -42,7 +42,6 @@ public class BaseDatos {
         Asignatura asgMate = hmAsignaturas.get(idMate);
         aluJose.add(asgMate);
         
-        
         hmAlumnos.get(idJose).add(hmAsignaturas.get(idDibujo));
         
         hmAlumnos.get(idJuan).add(hmAsignaturas.get(idCocina));
@@ -52,7 +51,6 @@ public class BaseDatos {
         hmAlumnos.get(idPepa).add(hmAsignaturas.get(idCocina));
         
         // Crear Profesores
-        // Crear Asignaturas
         int idProfeSabio = altaProfesor (new Profesor("Profe Sabio","C/Sabio Landia"));
         int idProfeLoco = altaProfesor (new Profesor("Profe Loco","C/El Parlamento"));
         int idProfeSordo = altaProfesor (new Profesor("Profe Sordo","C/Auditorio"));        
@@ -61,11 +59,12 @@ public class BaseDatos {
         hmAlumnos.put(alu.getId(),alu);
         return alu.getId();
     }
-    
+
     public int altaAsignatura (Asignatura asg){
         hmAsignaturas.put(asg.getId(),asg);
         return asg.getId();
     }
+
     public int altaProfesor (Profesor profe){
         hmProfesores.put(profe.getId(),profe);
         return profe.getId();

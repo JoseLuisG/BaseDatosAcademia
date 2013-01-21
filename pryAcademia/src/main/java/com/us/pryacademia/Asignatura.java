@@ -12,6 +12,8 @@ public class Asignatura extends ClasePadreAcademia {
     private static int idLast;
     
     private int   horas;
+    private int   idProfe;
+    private String idAula;
     private Date  horaIni;
     private Date  horaFin;
     
@@ -23,6 +25,7 @@ public class Asignatura extends ClasePadreAcademia {
         
     }
     //Obtiene el alumno
+    
     public Asignatura(Integer id) {
         Asignatura asg = Academia.db.getTbAsignaturas().get(id);
         this.id = asg.id;
@@ -30,8 +33,8 @@ public class Asignatura extends ClasePadreAcademia {
         this.horas = asg.horas;
         this.horaFin = asg.horaFin;
         this.horaIni = asg.horaIni;
+        this.hsAlu = asg.hsAlu;
     }
-    
     
     public Integer getId() {
         return this.id;
@@ -54,11 +57,50 @@ public class Asignatura extends ClasePadreAcademia {
             
     }
 
-
     public Collection<Alumno> getAlumnos() {
         return Collections.unmodifiableSet(hsAlu);
     }
 
+    public int getIdProfe() {
+        return idProfe;
+    }
+
+    public void setIdProfe(int idProfe) {
+        this.idProfe = idProfe;
+    }
+
+    public String getIdAula() {
+        return idAula;
+    }
+
+    public void setIdAula(String idAula) {
+        this.idAula = idAula;
+    }
+
+    
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Asignatura other = (Asignatura) obj;
+        if (this.horas != other.horas) {
+            return false;
+        }
+        return true;
+    }
+
+    
     @Override
     public String toString() {
         return "Asignatura{" + "id=" + id 

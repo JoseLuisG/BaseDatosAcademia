@@ -22,6 +22,7 @@ public class Alumno extends ClasePadreAcademia {
         this.id = alu.id;
         this.dir = alu.dir;
         this.nombre = alu.nombre;
+        this.hsAsg = alu.hsAsg;
     }
 
 
@@ -50,6 +51,28 @@ public class Alumno extends ClasePadreAcademia {
 
     public Collection<Asignatura> getAsignaturas() {
         return Collections.unmodifiableSet(hsAsg);
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Alumno other = (Alumno) obj;
+        if (this.id != other.id || this.id == 0) {
+            return false;
+        }
+        return true;
     }
     
     @Override
