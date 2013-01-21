@@ -25,6 +25,8 @@ public class Academia {
         mostrarProfes();
         mostrarAlumnos();
         mostrarAsignaturas();
+        mostrarAulas();
+        mostrarProfes();
         
         // Borrar una matriculacion desde alumnos
         System.out.println("");
@@ -67,20 +69,32 @@ public class Academia {
             {
                 System.out.println("    " + asg);
             }
-
         }
-        
     }
+        
     private static void mostrarAsignaturas(){
-        System.out.println("");
         System.out.println("========Datos Asignaturas  ===========");
         for (Asignatura asg : Academia.db.getAsignaturas())
         {
             System.out.println(asg);
-            System.out.println("Relacion de alumnos:");
+            System.out.println("Alumnos en asignatura:");
             for (Alumno alu : asg.getAlumnos())
             {
                 System.out.println("    " + alu);
+            }
+        }
+
+    }
+    private static void mostrarAulas(){
+        System.out.println("");
+        System.out.println("========Datos Aulas  ===========");
+        for (Aula au : Academia.db.getAulas())
+        {
+            System.out.println(au);
+            System.out.println("Relacion asignaturas:");
+            for (Asignatura asg : au.getAsignaturas())
+            {
+                System.out.println("    " + asg);
             }
             
         }

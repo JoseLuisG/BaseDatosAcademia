@@ -19,6 +19,7 @@ public class BaseDatos {
     static HashMap<Integer, Alumno> hmAlumnos = new HashMap<Integer, Alumno>(); 
     static HashMap<Integer, Asignatura> hmAsignaturas = new HashMap<Integer, Asignatura>(); 
     static HashMap<Integer, Profesor> hmProfesores = new HashMap<Integer, Profesor>(); 
+    static HashMap<String, Aula> hmAulas = new HashMap<String, Aula>(); 
 
     public BaseDatos(String nombre) {
         this.nombre = nombre;
@@ -54,7 +55,19 @@ public class BaseDatos {
         // Crear Profesores
         int idProfeSabio = altaProfesor (new Profesor("Profe Sabio","C/Sabio Landia"));
         int idProfeLoco = altaProfesor (new Profesor("Profe Loco","C/El Parlamento"));
-        int idProfeSordo = altaProfesor (new Profesor("Profe Sordo","C/Auditorio"));        
+        int idProfeSordo = altaProfesor (new Profesor("Profe Sordo","C/Auditorio"));   
+        
+        // El profe da asignaturas
+        Profesor pro = new Profesor(idProfeSabio);
+        pro.add(new Asignatura(idMate));
+        pro.add(new Asignatura(idDibujo));
+        
+        // Crear Aulas
+        String idAula01 = altaAula (new Aula("Planta 01", "AULA 01", true));
+        String idAula02 = altaAula (new Aula("Planta 02", "AULA 02", true));
+        
+        
+
     }
     public int altaAlumno (Alumno alu){
         hmAlumnos.put(alu.getId(),alu);
@@ -70,6 +83,10 @@ public class BaseDatos {
         hmProfesores.put(profe.getId(),profe);
         return profe.getId();
     }
+    public String altaAula (Aula au){
+        hmAulas.put(au.getId(),au);
+        return au.getId();
+    }
 
 
     public  Collection<Alumno> getAlumnos() {
@@ -79,19 +96,30 @@ public class BaseDatos {
         return Collections.unmodifiableMap(hmAlumnos);
     }
 
-    public  Map<Integer,Asignatura> getTbAsignaturas() {
-        return Collections.unmodifiableMap(hmAsignaturas);
-    }
-
 
     public Collection<Asignatura> getAsignaturas() {
         return Collections.unmodifiableCollection(hmAsignaturas.values());
     }
+    public  Map<Integer,Asignatura> getTbAsignaturas() {
+        return Collections.unmodifiableMap(hmAsignaturas);
+    }
+
     
     public Collection<Profesor> getProfesores() {
         return Collections.unmodifiableCollection(hmProfesores.values());
     }
+    public  Map<Integer,Profesor> getTbProfesores() {
+        return Collections.unmodifiableMap(hmProfesores);
+    }
+
     
-    
+    public Collection<Aula> getAulas() {
+        return Collections.unmodifiableCollection(hmAulas.values());
+    }
+    public  Map<String,Aula> getTbAulas() {
+        return Collections.unmodifiableMap(hmAulas);
+    }
+
+
     
 }

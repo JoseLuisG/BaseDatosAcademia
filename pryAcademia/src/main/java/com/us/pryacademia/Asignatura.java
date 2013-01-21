@@ -22,7 +22,7 @@ public class Asignatura extends ClasePadreAcademia {
     public Asignatura(String nombre, int horas) {
         super(++Asignatura.idLast, nombre);
         this.horas = horas;
-        this.id = ++Asignatura.idLast;
+        
     }
     //Obtiene el alumno
     
